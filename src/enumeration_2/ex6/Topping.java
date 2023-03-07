@@ -3,15 +3,18 @@ package enumeration_2.ex6;
 import java.util.Scanner;
 
 public enum Topping {
-    PEPPERONI,
-    MUSHROOMS,
-    ONIONS,
-    SAUSAGE;
-    public int toppingPrice(){
-        System.out.println("How many toppings do you want");
-        Scanner sc = new Scanner(System.in);
-        int input = sc.nextInt();
-        int price = input;
+    ONE(2.5),
+    TWO(2.8),
+    THREE(3.5),
+    FOUR(3.9);
+
+    protected double price;
+
+    Topping(double price) {
+        this.price = price;
+    }
+
+    public double getPrice() {
         return price;
     }
 }
