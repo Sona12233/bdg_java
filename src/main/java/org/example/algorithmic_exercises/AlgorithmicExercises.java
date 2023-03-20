@@ -1,6 +1,7 @@
 package org.example.algorithmic_exercises;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class AlgorithmicExercises {
     /**
@@ -85,6 +86,19 @@ public class AlgorithmicExercises {
             }
         }
         System.out.println(theLargest + ", " + theSmallest);
+    }
+
+    void nDegreeN(int n) {
+        int count = n;
+        int sum = n;
+        while (count > 1) {
+            sum = sum * n;
+            count--;
+        }
+        System.out.println(n + " to the powers of " + n + " equals " + Math.pow(n, n));
+        for (int i = 1; i <= sum; i++) {
+            System.out.println("I'm not left out․ " + i);
+        }
     }
 
     public static void main(String[] args) {
