@@ -25,9 +25,11 @@ public class AlgorithmicExercises {
         return false;
     }
 
-    /** 2. The prime factors of 455 are 5, 7 and 13.
-     Write a method that calculates the largest prime factor of a given
-     number.
+    /**
+     * 2. The prime factors of 455 are 5, 7 and 13.
+     * Write a method that calculates the largest prime factor of a given
+     * number.
+     *
      * @param n
      * @return
      */
@@ -47,56 +49,59 @@ public class AlgorithmicExercises {
         return theLargest;
     }
 
-    /** 3. Write a program that generates a random number between 1 and 100
-     (you can use the Random ( ) method from the Math class.
-     the next step check whether it is an even or an odd number. Each of
-     the above actions should be written to the console.
+    /**
+     * 3. Write a program that generates a random number between 1 and 100
+     * (you can use the Random ( ) method from the Math class.
+     * the next step check whether it is an even or an odd number. Each of
+     * the above actions should be written to the console.
+     *
      * @return
      */
-    public boolean random(){
+    public boolean random() {
         Random rd = new Random();
         int n = rd.nextInt(101);
-        if(n%2==0){
+        if (n % 2 == 0) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
-    /** 4. Write a program that will use the while loop to find the largest and
-     smallest number from the set of 10 randomly drawn integers from 1 to
-     100. In this task, do not use arrays or other collections.
-     import java.util.Random;
+    /**
+     * 4. Write a program that will use the while loop to find the largest and
+     * smallest number from the set of 10 randomly drawn integers from 1 to
+     * 100. In this task, do not use arrays or other collections.
+     * import java.util.Random;
      */
-    public void random2(){
+    public void random2() {
         Random rd = new Random();
         int theLargest = 0;
         int theSmallest = 100;
         int i = 10;
-        while(i>0){
+        while (i > 0) {
             int n = rd.nextInt(101);
             i--;
             System.out.println(n);
-            if(n<theSmallest){
-                theSmallest=n;
+            if (n < theSmallest) {
+                theSmallest = n;
             }
-            if (n>theLargest) {
-                theLargest=n;
+            if (n > theLargest) {
+                theLargest = n;
             }
         }
         System.out.println(theLargest + ", " + theSmallest);
     }
 
-    void nDegreeN(int n) {
-        int count = n;
-        int sum = n;
-        while (count > 1) {
-            sum = sum * n;
-            count--;
+    /**
+     * This method prints n^n times and has complexity of (On^n)
+     * @param n
+     */
+    void nPowN(int n) {
+        int m = 1;
+        for (int i = 0; i < n; i++) {
+            m *= n;
         }
-        System.out.println(n + " to the powers of " + n + " equals " + Math.pow(n, n));
-        for (int i = 1; i <= sum; i++) {
+        for (int i = 0; i < m; i++) {
             System.out.println("I'm not left out․ " + i);
         }
     }
@@ -104,7 +109,7 @@ public class AlgorithmicExercises {
     public static void main(String[] args) {
         AlgorithmicExercises obj = new AlgorithmicExercises();
         // System.out.println(obj.primeFactor(64));
-        obj.random2();
-
+        //obj.random2();
+        //obj.nPowN(4);
     }
 }
