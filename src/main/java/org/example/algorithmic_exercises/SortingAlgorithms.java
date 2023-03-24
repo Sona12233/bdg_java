@@ -72,7 +72,7 @@ public class SortingAlgorithms {
      * O(nlogn)
      * @param arr
      */
-    public void MyMergeSort(int[] arr) {
+    public void myMergeSort(int[] arr) {
         int length = arr.length;
         if (length < 2) return;
 
@@ -87,8 +87,8 @@ public class SortingAlgorithms {
         for (int i = midIndex; i < length; i++) {
             rightHalf[i - midIndex] = arr[i]; // righthandy sksi lcnel 0ic vochte midindexic
         }
-        MyMergeSort(leftHalf);
-        MyMergeSort(rightHalf);
+        myMergeSort(leftHalf);
+        myMergeSort(rightHalf);
 
         merge(arr, leftHalf, rightHalf);
     }
