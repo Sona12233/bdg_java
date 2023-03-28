@@ -36,7 +36,9 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E> {
      * @return
      */
     public boolean isEmpty() {
-        if (array[0] == null) return true;
+        if (array[0] == null) {
+            return true;
+        }
         return false;
     }
 
@@ -57,7 +59,9 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E> {
     @Override
     public boolean contains(Object o) {
         for (int i = 0; i < array.length; i++) {
-            if (o.equals(array[i])) return true;
+            if (o.equals(array[i])) {
+                return true;
+            }
         }
         return false;
     }
@@ -72,6 +76,54 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E> {
         for (int i = 0; i < size; i++) {
             array[i] = newArr[i];
         }
+        return array;
+    }
+
+    /**
+     * 7. Swaps two elements in an array list by index
+     *
+     * @param index1
+     * @param index2
+     * @return
+     */
+    public E[] swap(int index1, int index2) {
+        if ((index1 >= size || index1 < 0) || (index2 >= size || index2 < 0)) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        E temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
+        return array;
+    }
+
+    /**
+     * Copy other list elements;
+     *
+     * @param list
+     * @return
+     */
+    public E[] clone(List list) {
+        E element;
+        for (int i = 0; i < list.size(); i++) {
+            element = (E) list.get(i);
+            array[i] = element;
+            size++;
+        }
+        return array;
+    }
+
+    /**
+     * Updates an element by index
+     *
+     * @param index
+     * @param element
+     * @return
+     */
+    public E[] update(int index, E element) {
+        if (index >= size || index < 0) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        array[index] = element;
         return array;
     }
 
@@ -97,12 +149,14 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E> {
      * @param element element to be stored at the specified position
      * @return
      */
-    public E[] set(int index, E element) {
-        if (index >= size || index < 0)
+    public E[] set1(int index, E element) {
+        if (index >= size || index < 0) {
             throw new ArrayIndexOutOfBoundsException();
-        else {
+        } else {
             for (int i = 0; i < size; i++) {
-                if (i == index) array[index] = element;
+                if (i == index) {
+                    array[index] = element;
+                }
                 return array; // if index is replaced
             }
         }
