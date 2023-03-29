@@ -24,9 +24,10 @@ public class MyArrayList<E> extends AbstractList<E> implements List<E> {
      * 1. IterateS through all elements in a array list.
      */
     public void iterateAllElements() {
-        for (E temp : array) {
-            System.out.println(temp);
+        for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + ", ");
         }
+        System.out.println("\n");
     }
 
 
