@@ -76,14 +76,117 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
         tail = temp;
     }
 
+    /**
+     * Sets an element at index
+     * @param index
+     * @param data
+     */
     public void setter(int index, E data){
-        Node temp = head;
+        Node cur = head;
         counter = 0;
 
-        while (temp != null && counter != index){
-            temp = temp.next;
+        while (cur != null && counter != index){
+            cur = cur.next;
             counter++;
         }
+
+        Node temp = new Node(data);
+        cur.prev.next = temp; //harcnel
+        temp.prev = cur.prev;
+        cur.prev = temp;
+        temp.next = cur;
+
+    }
+
+    /**
+     * Removes the first element
+     */
+    public void removeFirst() {
+        if(size() == 0)
+            throw new NullPointerException();
+        else {
+            if (head.next == null) {
+                tail = null; //harcnel
+            }
+            else {
+                head.next.prev = null;
+            }
+            head = head.next;
+        }
+    }
+
+    /**
+     * Removes the last element
+     */
+    public void removeLast(){
+        if(size() == 0){
+            throw new NullPointerException();
+        }
+        else {
+            if(head.next == null){
+                head = null;
+            } else {
+                tail.prev.next = null;
+            }
+            tail = tail.prev;
+            counter--; //harcnel
+        }
+    }
+
+    /**
+     * Iterates through list and prints its elements
+     */
+    public void iterate(){
+        Node temp = head;
+        while (temp != null){
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println("");
+    }
+
+    /**
+     * Prints linked list in reversed order
+     */
+    public void reverse(){
+        Node temp = tail;
+        while(temp != null){
+            System.out.println(temp.data + " ");
+            temp = temp.prev;
+        }
+    }
+
+    /**
+     * @param element element whose presence in this list is to be tested
+     * @return true if is present and false otherwise
+     */
+    public boolean contains(Object element){
+        Node temp = head;
+        while (temp != null){
+            if (temp.data.equals(element)){
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
+    /**
+     * Replaces an element by given index
+     * @param index
+     * @param element
+     */
+    public void replace(int index, E element){
+        Node temp = head;
+         counter = 0;
+         while (temp != null){
+             if(index == counter){
+                 temp.data = element;
+                 return;
+             }
+             temp = temp.next;
+             counter++;
+         }
     }
 
     /**
@@ -101,4 +204,22 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
         }
         return counter;
     }
+
+    /**
+     * Clears the list
+     */
+    public void clear(){
+        head = null;
+        tail = null;
+    }
+
+    public void cloneLinkedList(MyLinkedList list){
+        list.clear();
+        Node temp = head;
+        while(temp != null){
+            list.addLast(temp.data);
+            temp = temp.next;
+        }
+    }
+
 }
