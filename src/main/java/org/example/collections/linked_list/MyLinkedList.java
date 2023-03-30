@@ -48,7 +48,7 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
     }
 
     /**
-     * Adds first element
+     * Adds an element at first element
      * @param data
      */
     public void addFirst(E data) {
@@ -62,6 +62,10 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
         head = temp;
     }
 
+    /**
+     * Adds an element at last position
+     * @param data
+     */
     public void addLast(E data){
         Node temp = new Node(data);
         if (isEmpty()){
@@ -70,7 +74,16 @@ public class MyLinkedList<E> extends AbstractList<E> implements List<E>, RandomA
 
         temp.prev = tail;
         tail = temp;
+    }
 
+    public void setter(int index, E data){
+        Node temp = head;
+        counter = 0;
+
+        while (temp != null && counter != index){
+            temp = temp.next;
+            counter++;
+        }
     }
 
     /**
